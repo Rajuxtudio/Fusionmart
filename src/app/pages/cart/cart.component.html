@@ -1,0 +1,64 @@
+<app-main-header></app-main-header>
+
+<div class="purchase-container">
+  <div class="product" *ngFor="let data of ItemCardData; let i = index">
+    <mat-card class="product-card" appearance="outlined">
+      <div class="product-content">
+        <div class="product-left">
+          <mat-card-header>
+            <mat-card-title>{{ data.productName }}</mat-card-title>
+          </mat-card-header>
+          <div class="card-img">
+            <img
+              mat-card-image
+              [src]="data.productImageUrl"
+              alt="Product Image"
+            />
+          </div>
+        </div>
+        <div class="product-middle">
+          <mat-card-content>
+            <p>{{ data.productDescription }}</p>
+            <p>{{ data.deliveryTimeSpan }}</p>
+            <div class="price">
+              <p>Price: ₹{{ data.productPrice }}</p>
+            </div>
+          </mat-card-content>
+        </div>
+        <div class="product-right">
+          <div class="quantity">
+            <mat-form-field appearance="fill" appearance="outline" style="width: 108px;">
+              <input
+              placeholder="quantity"
+                matInput
+                type="number"
+                [(ngModel)]="data.quantity"
+                min="0"
+                max="10"
+              />
+            </mat-form-field>
+          </div>
+          <button mat-button (click)="removeItem(i)">Remove</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+
+  <div class="mat-card payment-card">
+    <h6>Proceed to Buy</h6>
+    <hr />
+    <div class="payment-options">
+
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="selectPaymentOption('Credit Card')"
+      >
+        <mat-icon class="material-symbols-outlined"></mat-icon>
+        Buy 
+      </button>
+
+    </div>
+  </div>
+</div>

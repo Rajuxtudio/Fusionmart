@@ -1,0 +1,46 @@
+
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#headerUpdateColumn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-menu{
+    width: 100%;
+    float: left;
+    background-color: #2b2a29;
+    clip-path: polygon(0 0,100% 0,96% 100%,3% 100%);
+    height: auto;
+    padding: 10px 0;
+    width: 88vw;
+}
+.custom-menu ul {
+    list-style: none;
+    padding: 0 5vw;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+ }
+ 
+ .custom-menu li {
+    display: inline-block;
+    margin-right: 20px;
+ }
+ 
+ .custom-menu a {
+    text-decoration: none;
+    color: white; /* Default text color */
+    transition: color 0.3s; /* Smooth color transition on hover */
+ }
+ 
+ .custom-menu a:hover {
+    color: #f26522; /* Text color on hover */
+ }
+ 

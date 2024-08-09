@@ -1,0 +1,26 @@
+.fashion{
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 6vw;
+}
+.hashionHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.category{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.categoryCard{
+    flex: 1; /* Each card takes equal width */
+    max-width: calc(25% - 20px); /* Adjust as needed (20px for margins) */
+    margin: 10px; /* Add spacing between cards */
+}
+.Image{
+    width: auto;
+    display: contents;
+}

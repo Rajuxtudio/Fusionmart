@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 16.67%;
+}
+
+.laptopGrid{
+    padding: 2vw 6vw;
+}
+
+.addSearch{
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+}
+.actionBtn{
+  display: flex;
+  flex-direction: row;
+  gap: '';
+}

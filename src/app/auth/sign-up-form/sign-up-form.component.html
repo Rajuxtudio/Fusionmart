@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="left-container">
+      <img src="https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-3530.jpg?t=st=1722242602~exp=1722246202~hmac=e65a010f850b45c21e6c9431a822484460985d67f2f6d258c8ea5e24badab558&w=740"
+        alt="Signup Image">
+    </div>
+    <div class="right-container">
+      <form class="grid-container" [formGroup]="signupForm" (ngSubmit)="SignupUser()" >
+        <h1>Sign up</h1>
+        <br>
+        <div id="UserName">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>User Name</mat-label>
+            <input matInput type="text" formControlName="userName">
+          </mat-form-field>
+          <div *ngIf="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched">
+            <small *ngIf="signupForm.get('userName')?.errors?.['required']">User Name is required.</small>
+            <small *ngIf="signupForm.get('userName')?.errors?.['maxlength']">User Name cannot be more than 25 characters.</small>
+          </div>
+        </div>
+        <br>
+        <div id="PhoneNumber">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Phone Number</mat-label>
+            <input matInput type="text" formControlName="phoneNumber">
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+          <div *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched">
+            <small *ngIf="signupForm.get('phoneNumber')?.errors?.['required']">Phone Number is required.</small>
+            <small *ngIf="signupForm.get('phoneNumber')?.errors?.['pattern']">Phone Number must be exactly 10 digits.</small>
+          </div>
+        </div>
+        <br>
+        <div id="email">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+          <small *ngIf="signupForm.get('email')?.errors?.['emailExists']">email already exist</small>
+        </div>
+        <br>
+        <div id="password">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon>{{isPasswordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <br>
+        <div id="ConfirmPassword">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Confirm Password</mat-label>
+              <input matInput [type]="isPasswordVisible ? 'text' : 'password'" formControlName="confirmPassword">
+              <button mat-icon-button matSuffix (click)="toggleConfirmPasswordVisibility()">
+                <mat-icon>{{isPasswordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+            <div *ngIf="signupForm.errors?.['passwordMismatch'] && signupForm.get('confirmPassword')?.touched">
+              <small>Passwords do not match.</small>
+            </div>
+          </div>
+        <br>
+        <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="!signupForm.valid">
+          Create an Account
+        </button>
+        <br>
+        <div class="AccRow">
+          Already have an account?
+          <button mat-button (click)="navigateToLogin()">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,33 @@
+<div class="ItemContainer" *ngFor="let data of ItemCardData; let i = index" >
+  <mat-card
+    class="ProductCard"
+    appearance="outlined"
+    *ngIf="searchText === '' || searchText"
+  >
+    <mat-card-header>
+      <mat-card-title style="font-size: 18px"
+        >{{data.productName}}</mat-card-title
+      >
+    </mat-card-header>
+    <div class="cardimg">
+      <img
+        mat-card-image
+        src={{data.productImageUrl}}
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+    <mat-card-content>
+      <p style="font-size: 12px">{{data.productDescription}}</p>
+      <p style="font-size: 13px">{{data.deliveryTimeSpan}}</p>
+      <div class="price">
+        <p>Price:</p>
+        <p style="font-weight: bold">₹</p>
+        <p style="font-weight: bold">{{data.productPrice}}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions style="justify-content: space-around">
+      <button mat-button>Add to cart</button>
+      <button mat-flat-button (click)="buyNow()" >Buy Now</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

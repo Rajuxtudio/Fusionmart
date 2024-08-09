@@ -1,0 +1,50 @@
+<mat-toolbar style="background-color: rgba(247, 247, 247, 0.116); height: 72px">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img
+    src="Logo.png"
+    alt=""
+    srcset=""
+    style="height: 48px"
+    (click)="goToHome()"
+  />
+  <span class="example-spacer"></span>
+  <mat-form-field appearance="outline">
+    <mat-icon matTextPrefix style="width: 0"></mat-icon>
+    <input
+      matInput
+      placeholder="Search"
+      [(ngModel)]="enterSearchValue"
+      (input)="onSearch($event)"
+    />
+    <mat-icon matSuffix *ngIf="searchQuery" (click)="clearSearch()"
+      >close</mat-icon
+    >
+  </mat-form-field>
+
+  <span class="searchSpace"></span>
+  <button mat-icon-button class="example-icon favorite-icon">
+    <mat-icon class="material-symbols-outlined">shopping_bag</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon">
+    <mat-icon class="material-symbols-outlined">shopping_cart</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon">
+    <mat-icon class="material-symbols-outlined">account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <ng-container *ngIf="user; else loggedOut">
+      <button mat-menu-item disabled>{{ user.email }}</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </ng-container>
+    <ng-template #loggedOut>
+      <button mat-menu-item (click)="login()">Login</button>
+      <button mat-menu-item (click)="signup()">Signup</button>
+    </ng-template>
+  </mat-menu>
+</mat-toolbar>

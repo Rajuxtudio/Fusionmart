@@ -1,0 +1,28 @@
+.grid{
+    display: grid;
+    flex-direction: column;
+    padding: 6vh 6vw;
+    gap: 4vh;
+    
+}
+.hashionHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.category{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.chooseUscard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: stretch;
+    background-color: aliceblue;
+    width: 33% ;
+}

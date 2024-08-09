@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="left-container">
+      <img src="https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-3530.jpg?t=st=1722242602~exp=1722246202~hmac=e65a010f850b45c21e6c9431a822484460985d67f2f6d258c8ea5e24badab558&w=740"
+        alt="Login Image">
+    </div>
+    <div class="right-container">
+      <form [formGroup]="loginForm" class="grid-container" (ngSubmit)="login()">
+        <h1>Login</h1>
+        <h2>Welcome back! Please login to your account.</h2>
+        <br>
+        <div id="email">
+          <mat-form-field appearance="outline">
+            <mat-label>Email or Phone Number</mat-label>
+            <input matInput type="email" formControlName="email">
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+          <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+            <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+            <small *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email address.</small>
+          </div>
+        </div>
+        <br>
+        <div id="password">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon>{{isPasswordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+          </div>
+          <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+          </div>
+        </div>
+        <br>
+        <div id="Rem_Sign">
+          <div class="AccRow">
+            <mat-checkbox>Remember me</mat-checkbox>
+            <button mat-button>Forget Password</button>
+          </div>
+        </div>
+        <br>
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+          <mat-icon>login</mat-icon>
+          Login
+        </button>
+        <br>
+        <div id="Rem_Sign">
+          <div class="AccRow">
+            Don't have an account yet?
+            <button mat-button style="width: 25%;" (click)="navigateToSignup()">Sign up</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
